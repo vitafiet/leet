@@ -5,7 +5,7 @@ import java.util.List;
 
 class Solution {
     public List<String> wordBreak(String s, List<String> wordDict) {
-        if (s.length() > 100) return new ArrayList();
+        if (s.length() > 100) return new ArrayList(); // <-- limit.
         
         ArrayList<String> fin = new ArrayList<String>();
 
