@@ -6,7 +6,8 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+//        Solution s = new Solution();
+        Solution_Memoization2 s = new Solution_Memoization2();
         Solution_Memoization sm = null;
         Solution_Hybrid sh = new Solution_Hybrid();
 
