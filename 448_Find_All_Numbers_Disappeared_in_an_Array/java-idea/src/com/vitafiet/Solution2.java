@@ -3,13 +3,7 @@ package com.vitafiet;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-leetcode execution:
-Runtime: 5 ms
-Memory Usage: 49 MB
- */
-
-public class Solution {
+public class Solution2 {
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
 
@@ -17,14 +11,16 @@ public class Solution {
 
         for( int i = 0; i < nums.length; i++){
 
-            if(nums[i] == 0 || nums[i] == i+1){ continue;}
-            else {
+            if(nums[i] != 0 && nums[i] != i+1) {
 
                 int outOfPlaceNo = nums[i];
                 nums[i] = 0;
 
                 while(outOfPlaceNo != 0)
                 {
+                    if (missing.contains(outOfPlaceNo))
+                        missing.remove(new Integer(outOfPlaceNo));
+
                     if(nums[outOfPlaceNo-1] == outOfPlaceNo) { // duplicate
                         outOfPlaceNo = 0; //break
                     } else {
@@ -35,11 +31,13 @@ public class Solution {
                     }
                 }
             }
+
+            if(nums[i] == 0) {
+                missing.add(i+1);
+            }
+
         }
 
-        for(int i = 0; i < nums.length; i++) {
-            if(nums[i] == 0) missing.add(i+1);
-        }
         return missing;
     }
 
