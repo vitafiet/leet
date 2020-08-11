@@ -13,3 +13,7 @@ Output: 3
 Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, her h-index is 3.
 
 **Note:** If there are several possible values for `h`, the maximum one is taken as the *h-index*.
+
+**Hint #1:** An easy approach is to sort the array first. \
+**Hint #2:** What are the possible values of h-index? \
+**Hint #3:** A faster approach is to use extra space.
