@@ -10,6 +10,7 @@ public class Main {
             throws java.io.FileNotFoundException, java.io.IOException
     {
         Solution s = new Solution();
+        SolutionBinomialCoefficient sb = new SolutionBinomialCoefficient();
 
         long startTime = 0;
         long endTime = 0;
@@ -35,9 +36,14 @@ public class Main {
             System.out.println(input + ": " + val);
 
             startTime = System.nanoTime();
-            System.out.println("Output:" + s.getRow(Integer.parseInt(val)));
+            System.out.println("Output1:" + s.getRow(Integer.parseInt(val)));
             endTime = System.nanoTime();
-            System.out.println("Time:" + (endTime-startTime)/1000 + "ns");
+            System.out.println("Time1:" + (endTime-startTime)/1000 + "ns");
+
+            startTime = System.nanoTime();
+            System.out.println("Output2:" + sb.getRow(Integer.parseInt(val)));
+            endTime = System.nanoTime();
+            System.out.println("Time2:" + (endTime-startTime)/1000 + "ns");
         }
 
         in.close();
