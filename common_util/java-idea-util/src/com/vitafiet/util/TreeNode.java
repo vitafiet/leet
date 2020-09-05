@@ -1,15 +1,23 @@
-package com.vitafiet;
+package com.vitafiet.util;
 
-import java.util.ArrayList;
+/*
+Binary Tree.
+ */
 
 public class TreeNode {
-    int val;
+    public int val;
 
-    TreeNode left;
-    TreeNode right;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode() {}
+    public TreeNode() {}
 
+    /*
+    Initializes the tree from an array of Integers.
+    The tree elements within the array should be in such that for any node with index "n",
+        the left node's index will be: 2n+1
+        the right node's index will be: 2n+2
+     */
     public void initialize(Integer[] nodesList, int id){
 
         if(nodesList == null || nodesList.length < 1 || nodesList[id] == null) return;
@@ -32,9 +40,9 @@ public class TreeNode {
 
     }
 
-    TreeNode(int val) { this.val = val; }
+    public TreeNode(int val) { this.val = val; }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
+    public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="java-idea-util">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../common_util/java-idea-util/out/production/java-idea-util" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

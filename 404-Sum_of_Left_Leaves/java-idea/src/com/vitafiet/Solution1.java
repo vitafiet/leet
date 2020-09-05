@@ -1,5 +1,7 @@
 package com.vitafiet;
 
+import com.vitafiet.util.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

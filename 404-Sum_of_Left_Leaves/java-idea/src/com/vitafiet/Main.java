@@ -1,8 +1,11 @@
 package com.vitafiet;
 
+import com.vitafiet.util.ParseStringTo;
+import com.vitafiet.util.PersistentProperties;
+import com.vitafiet.util.TreeNode;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class Main {
@@ -17,27 +20,35 @@ public class Main {
         long startTime = 0;
         long endTime = 0;
 
-        String propertiesFileName = "treeTestData";
+//        String propertiesFileName = "treeTestData";
 
+        PersistentProperties p = new PersistentProperties("treeTestData");
+        p.writeProperty("tree1", "3,9,20,null,null,15,7");
+        p.writeProperty("tree2", "3");
+        p.writeProperty("tree3", "");
+//        p.persist();
 
-        Properties props = new Properties();
-        props.put("tree1", "3,9,20,null,null,15,7");
-        props.put("tree2", "3");
-        props.put("tree3", "");
-        FileOutputStream out = new FileOutputStream(propertiesFileName);
-        props.store(out, "---No Comment---");
-        out.close();
+//        Properties props = new Properties();
+//        props.put("tree1", "3,9,20,null,null,15,7");
+//        props.put("tree2", "3");
+//        props.put("tree3", "");
+//        FileOutputStream out = new FileOutputStream(propertiesFileName);
+//        props.store(out, "---No Comment---");
+//        out.close();
 
-        Properties propRead = new Properties();
-        FileInputStream in = new FileInputStream(propertiesFileName);
-        propRead.load(in);
+//        Properties propRead = new Properties();
+//        FileInputStream in = new FileInputStream(propertiesFileName);
+//        propRead.load(in);
 
-        for(Object key : propRead.keySet()) {
+//        for(Object key : propRead.keySet()) {
+//            String strKey = key.toString();
+//            String strVal = (propRead.get(key)).toString();
+        for(Object key : p.getAllKeys()) {
             String strKey = key.toString();
-            String strVal = (propRead.get(key)).toString();
+            String strVal = (p.getValue(key)).toString();
             System.out.println(strKey + ": " + strVal);
 
-            Integer[] arr = strToIntegerArray(strVal);
+            Integer[] arr = ParseStringTo.integerArray(strVal);
 //            for(Integer i : arr)
 //                System.out.println(i);
 
@@ -55,66 +66,10 @@ public class Main {
             System.out.println(" Time2:" + (endTime-startTime)/1000 + "ns");
         }
 
-        in.close();
+//        in.close();
     }
 
-    public static String arrayToStr(int[] arr){
-        String s = "";
-        for (int i = 0; i < arr.length; i++) {
-            s = s + arr[i];
-            if (i < arr.length -1) s = s + ",";
-        }
-        return s;
-    }
 
-    public static int[] strToIntArray(String s){
-        String[] sList = s.split(",");
-        int[] arr = new int[sList.length];
 
-        int i=0;
-        for(String str : sList)
-            arr[i++] = Integer.parseInt(str);
 
-        return arr;
-    }
-
-    public static Integer[] strToIntegerArray(String s){
-//        System.out.println("Parsing string to 'Integer':" + s);
-
-        String[] strArr = s.split(",");
-        Integer[] ret = new Integer[strArr.length];
-
-        for(int i = 0; i<ret.length; i++){
-            if(strArr[i].equals("null") || strArr[i].equals("")) ret[i] = null;
-            else ret[i] = Integer.parseInt(strArr[i]);
-        }
-
-        return ret;
-    }
-
-    private static void printArr(String str, int[] arr){
-        System.out.print(str);
-        for(int i=0; i<arr.length; i++){
-            System.out.print(arr[i]);
-            if(i != arr.length - 1) System.out.print(",");
-        }
-        System.out.println();
-    }
-
-    private static String[] parseStringArr(String str) {
-        str = str.replaceAll("\"|\\]|\\[", "");
-        System.out.println("Parsing to StrArr: " + str);
-
-        return str.split(",");
-    }
-
-    private static char[] parseCharArr(String str) {
-        str = str.replaceAll("\"|\\]|\\[", "");
-        System.out.println("Parsing to CharArr: " + str);
-        String[] strArr = str.split(",");
-        char[] ret = new char[strArr.length];
-        for(int i=0; i<strArr.length; i++)
-            ret[i] = strArr[i].charAt(0);
-        return ret;
-    }
 }
